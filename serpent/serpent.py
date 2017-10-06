@@ -15,7 +15,7 @@ from serpent.window_controller import WindowController
 # Add the current working directory to sys.path to discover user plugins!
 sys.path.insert(0, os.getcwd())
 
-VERSION = "0.1.9b1"
+VERSION = "0.1.10b1"
 
 valid_commands = [
     "setup",
@@ -158,14 +158,15 @@ def setup():
     os.makedirs(os.path.join(os.getcwd(), "datasets/current"), exist_ok=True)
 
 
-def grab_frames(width, height, x_offset, y_offset):
+def grab_frames(width, height, x_offset, y_offset, pipeline_string=None):
     from serpent.frame_grabber import FrameGrabber
 
     frame_grabber = FrameGrabber(
         width=int(width),
         height=int(height),
         x_offset=int(x_offset),
-        y_offset=int(y_offset)
+        y_offset=int(y_offset),
+        pipeline_string=pipeline_string
     )
 
     frame_grabber.start()
